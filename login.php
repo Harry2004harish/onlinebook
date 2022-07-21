@@ -70,14 +70,34 @@ if(isset($message)){
 }
 ?>
 
-    <div class="form-container">
+    <!-- <div class="form-container"> -->
 
-        <form action="" method="post">
-            <h3>login now</h3>
+    <!-- <form action="" method="post"> -->
+    <!-- <h3>login now</h3>
             <input type="email" name="email" placeholder="enter your email" required class="box">
             <input type="password" name="password" placeholder="enter your password" required class="box">
             <input type="submit" name="submit" value="login now" class="btn">
-            <p>don't have an account? <a href="register.php">register now</a></p>
+            <p>don't have an account? <a href="register.php">register now</a></p> -->
+    <div class="login-form-container">
+        <div id="close-login-btn" class="fas fa-times"></div>
+        <form action="" method="post">
+            <h3>Login</h3>
+            <span>Username</span>
+            <input type="email" name="email" class="box" placeholder="Enter your email" id="" required class="box">
+            <span>Password</span>
+            <input type="password" name="password" class="box" placeholder="Enter your password" id="" required
+                class="box">
+            <div class="checkbox">
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">Remember me</label>
+            </div>
+            <input type="submit" name="submit" value="login now" class="btn">
+            <!-- <input type="submit" value="sign in" class="btn"> -->
+            <p>Forget Password ? <a href="#">Click Here</a></p>
+            <p>Don't Have an account ? <a href="#">Create One</a>
+            </p>
+        </form>
+        <!-- </div> -->
         </form>
 
     </div>

@@ -9,7 +9,6 @@ if(isset($_POST['submit'])){
    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
    $cpass = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
    $user_type = $_POST['user_type'];
-
    $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
 
    if(mysqli_num_rows($select_users) > 0){
@@ -41,7 +40,8 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/registeruser.css">
+
 
 </head>
 
@@ -62,7 +62,7 @@ if(isset($message)){
 }
 ?>
 
-    <div class="form-container">
+    <!-- <div class="form-container">
 
         <form action="" method="post">
             <h3>register now</h3>
@@ -72,14 +72,52 @@ if(isset($message)){
             <input type="password" name="cpassword" placeholder="confirm your password" required class="box">
             <select name="user_type" class="box">
                 <option value="user">user</option>
-                <!-- <option value="admin">admin</option> -->
+                <option value="admin">admin</option>
             </select>
             <input type="submit" name="submit" value="register now" class="btn">
             <p>already have an account? <a href="login.php">login now</a></p>
         </form>
 
+    </div> -->
+    <div class="signup-container">
+        <div class="signup-header">
+            <h2>Create Account</h2>
+        </div>
+        <form action="" method="post" class="signup-form" id="signup-form">
+            <div class="form-control">
+                <label>Username</label>
+                <input type="text" name="name" placeholder="username" require class="box">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="email address" require class="box">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="password" required class="box">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+            </div>
+            <div class="form-control">
+                <label>Confirm Password</label>
+                <input type="password" name="cpassword" placeholder="confirm password " required class="box">
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>Error message</small>
+                <select name="user_type" class="box">
+                    <option value="user">user</option>
+                </select>
+            </div>
+            <button type="submit" name="submit" value="register now" class="btn">Submit</button>
+        </form>
     </div>
-
 </body>
 
 </html>

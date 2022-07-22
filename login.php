@@ -82,7 +82,7 @@ if(isset($message)){
         <div id="close-login-btn" class="fas fa-times"></div>
         <form action="" method="post">
             <h3>Login</h3>
-            <span>Username</span>
+            <span>Email</span>
             <input type="email" name="email" class="box" placeholder="Enter your email" id="" required class="box">
             <span>Password</span>
             <input type="password" name="password" class="box" placeholder="Enter your password" id="" required
@@ -94,7 +94,7 @@ if(isset($message)){
             <input type="submit" name="submit" value="login now" class="btn">
             <!-- <input type="submit" value="sign in" class="btn"> -->
             <p>Forget Password ? <a href="#">Click Here</a></p>
-            <p>Don't Have an account ? <a href="#">Create One</a>
+            <p>Don't Have an account ? <a href="register.php">Create One</a>
             </p>
         </form>
         <!-- </div> -->

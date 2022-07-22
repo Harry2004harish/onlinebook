@@ -29,6 +29,7 @@ if(isset($_POST['add_to_cart'])){
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,47 +37,31 @@ if(isset($_POST['add_to_cart'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>home</title>
 
-    <!--Font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- CSS Linked -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="usercss/style.css">
+
 </head>
 
 <body>
-    <!-- Header section starts -->
-    <header class="header">
-        <div class="header-1">
-            <a href="#" class="logo"><i class=" fas fa-book"></i>bookly</a>
-            <form action="" class="search-form">
-                <input type="search" name="" placeholder="Search Here" id="search-box">
-                <label for="search-box" class="fas fa-search"></label>
-            </form>
 
-            <div class="icons">
-                <div id="search-btn" class="fas fa-search"></div>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <div id="login-btn" class="fas fa-user"></div>
-            </div>
+    <?php include 'header.php'; ?>
+
+    <section class="home">
+
+        <div class="content">
+            <h3>Hand Picked Book to your door.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quod? Reiciendis ut porro iste totam.
+            </p>
+            <a href="about.php" class="white-btn">discover more</a>
         </div>
 
-        <!-- navi -->
-        <div class="header-2">
-            <nav class="navbar">
-                <a href="#home">Home</a>
-                <a href="#featured">Featured</a>
-                <a href="#arrivals">Arrivals</a>
-                <a href="#reviews">Reviews</a>
-                <a href="#blogs">blogs</a>
-            </nav>
+    </section>
 
-        </div>
-    </header>
-
-    <!-- header section ends -->
     <section class="products">
 
         <h1 class="title">latest products</h1>
@@ -112,19 +97,45 @@ if(isset($_POST['add_to_cart'])){
 
     </section>
 
+    <section class="about">
 
-    <!-- bottom navbar -->
+        <div class="flex">
 
-    <nav class="bottom-navbar">
-        <a href="#home" class="fas fa-home"></a>
-        <a href="#featured" class="fas fa-list"></a>
-        <a href="#arrivals" class="fas fa-tags"></a>
-        <a href="#reviews" class="fas fa-comments"></a>
-        <a href="#blogs" class="fas fa-blogs"></a>
-    </nav>
+            <div class="image">
+                <img src="images/about-img.jpg" alt="">
+            </div>
 
-    <!-- JS file linked -->
+            <div class="content">
+                <h3>about us</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit quos enim minima ipsa dicta officia
+                    corporis ratione saepe sed adipisci?</p>
+                <a href="about.php" class="btn">read more</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="home-contact">
+
+        <div class="content">
+            <h3>have any questions?</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque cumque exercitationem repellendus, amet
+                ullam voluptatibus?</p>
+            <a href="contact.php" class="white-btn">contact us</a>
+        </div>
+
+    </section>
+
+
+
+
+
+    <?php include 'footer.php'; ?>
+
+    <!-- custom js file link  -->
     <script src="js/script.js"></script>
+
 </body>
 
 </html>

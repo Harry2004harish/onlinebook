@@ -6,7 +6,7 @@
 }
 
 body {
-	background-color: #9b59b6;
+	background: #FAFAFA;
 	font-family: 'Open Sans', sans-serif;
 	display: flex;
 	align-items: center;
@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-	background-color: #fff;
+	background-color: #FFFFFF;
 	border-radius: 5px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 	overflow: hidden;
@@ -102,8 +102,8 @@ body {
 }
 
 .form button {
-	background-color: #8e44ad;
-	border: 2px solid #8e44ad;
+	background-color: #3DA89F;
+	border: 2px solid #3DA89F;
 	border-radius: 4px;
 	color: #fff;
 	display: block;
@@ -114,6 +114,11 @@ body {
 	width: 100%;
 }
 
+.form button:hover{
+    cursor: pointer;
+    background-color: #2fcf72;
+    border: 2px solid #2fcf72;
+}
 
 
 

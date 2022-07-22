@@ -46,22 +46,6 @@ if(isset($_POST['submit'])){
 </head>
 
 <body>
-
-
-
-    <?php
-if(isset($message)){
-   foreach($message as $message){
-      echo '
-      <div class="message">
-         <span>'.$message.'</span>
-         <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-      </div>
-      ';
-   }
-}
-?>
-
     <!-- <div class="form-container">
 
         <form action="" method="post">
@@ -114,6 +98,18 @@ if(isset($message)){
                 <select name="user_type" class="box">
                     <option value="user">user</option>
                 </select>
+                <?php
+if(isset($message)){
+   foreach($message as $message){
+      echo '
+      <div class="msg">
+         <span>'.$message.'</span>
+         <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+      </div>
+      ';
+   }
+}
+?>
             </div>
             <button type="submit" name="submit" value="register now" class="btn">Submit</button>
         </form>

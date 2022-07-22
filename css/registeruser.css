@@ -115,3 +115,34 @@ body{
     border-radius: 4px;
     border: 2px solid #27ae60;
 }
+/* error message box */
+
+.message{
+    position: sticky;
+    top:0;
+    margin:0 auto;
+    max-width: 1200px;
+    background-color: var(--white);
+    padding:2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10000;
+    gap: 0.5em;
+ }
+ 
+ .msg span{
+    font-size: 1.2rem;
+    color:red;
+ }
+ 
+ .msg i{
+    cursor: pointer;
+    color:var(--red);
+    font-size: 2.5rem;
+ }
+ 
+ .msg i:hover{
+    transform: rotate(90deg);
+ }
+ 

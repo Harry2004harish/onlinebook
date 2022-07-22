@@ -270,9 +270,37 @@ body{
 
 /* sign-up */
 
+/* login error message starts here */
+/* dont touch it just fixed */
+.message{
+    position: sticky;
+    top:0;
+    margin:0 auto;
+    max-width: 1200px;
+    background-color: var(--white);
+    padding:2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10000;
+    gap:1.5rem;
+ }
+ .message span{
+    font-size: 2rem;
+    color:red;
+ }
+ 
+ .message i{
+    cursor: pointer;
+    color:red;
+    font-size: 2.5rem;
+ }
+ 
+ .message i:hover{
+    transform: rotate(90deg);
+ }
 
-
-
+ /* login error message css end here */
 
 
 

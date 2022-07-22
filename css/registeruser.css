@@ -58,6 +58,25 @@ body{
     width: 100%;
 }
 
+.form-control.success input{
+    border-color: #219159;
+}
+
+.form-control.error input{
+     border-color: #e74c3c;
+}
+
+.form-control.success i.fa-check-circle{   
+    color: #2ecc71;
+    visibility: visible;
+}
+
+
+.form-control.error i.fa-exclamation-circle{   
+    color: #e74c3c;
+    visibility: visible;
+}
+
 .form-control i{
     position: absolute;
     top: 40px;
@@ -70,6 +89,12 @@ body{
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.form-control.error small{
+    color: #e74c3c;
+    visibility: visible;
+
 }
 
 .signup-form button{

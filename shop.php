@@ -37,7 +37,7 @@ if(isset($_POST['add_to_cart'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>shop</title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -51,16 +51,10 @@ if(isset($_POST['add_to_cart'])){
 
     <?php include 'header.php'; ?>
 
-    <section class="home">
-
-        <div class="content">
-            <h3>Hand Picked Book to your door.</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quod? Reiciendis ut porro iste totam.
-            </p>
-            <a href="about.php" class="white-btn">discover more</a>
-        </div>
-
-    </section>
+    <div class="heading">
+        <h3>our shop</h3>
+        <p> <a href="home.php">home</a> / shop </p>
+    </div>
 
     <section class="products">
 
@@ -69,7 +63,7 @@ if(isset($_POST['add_to_cart'])){
         <div class="box-container">
 
             <?php  
-         $select_products = mysqli_query($conn, "SELECT * FROM `products` LIMIT 6") or die('query failed');
+         $select_products = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
          if(mysqli_num_rows($select_products) > 0){
             while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>
@@ -91,45 +85,7 @@ if(isset($_POST['add_to_cart'])){
       ?>
         </div>
 
-        <div class="load-more" style="margin-top: 2rem; text-align:center">
-            <a href="shop.php" class="option-btn">load more</a>
-        </div>
-
     </section>
-
-    <section class="about">
-
-        <div class="flex">
-
-            <div class="image">
-                <img src="images/about-img.jpg" alt="">
-            </div>
-
-            <div class="content">
-                <h3>about us</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit quos enim minima ipsa dicta officia
-                    corporis ratione saepe sed adipisci?</p>
-                <a href="about.php" class="btn">read more</a>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="home-contact">
-
-        <div class="content">
-            <h3>have any questions?</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque cumque exercitationem repellendus, amet
-                ullam voluptatibus?</p>
-            <a href="contact.php" class="white-btn">contact us</a>
-        </div>
-
-    </section>
-
-
-
-
 
     <?php include 'footer.php'; ?>
 

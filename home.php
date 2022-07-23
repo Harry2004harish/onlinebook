@@ -61,7 +61,7 @@ if(isset($_POST['add_to_cart'])){
         </div>
 
     </section>
-
+    <?php include 'featureproduct.php';?>
     <section class="products">
 
         <h1 class="title">latest products</h1>
@@ -96,6 +96,7 @@ if(isset($_POST['add_to_cart'])){
         </div>
 
     </section>
+
 
     <section class="about">
 

@@ -136,8 +136,9 @@ if(isset($_POST['update_product'])){
                 <div class="name"><?php echo $fetch_products['name']; ?></div>
                 <div class="price">Rs <?php echo $fetch_products['price']; ?>/-</div>
                 <!-- <div class="product_desc"><?php echo $fetch_products['product_desc']; ?></div> -->
-                <a href="admin_products.php?update=<?php echo $fetch_products['id']; ?>" class="option-btn">update</a>
-                <a href="admin_products.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-btn"
+                <a href="admin_featuredproduct.php?update=<?php echo $fetch_products['id']; ?>"
+                    class="option-btn">update</a>
+                <a href="admin_featuredproduct.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-btn"
                     onclick="return confirm('delete this product?');">delete</a>
             </div>
             <?php
@@ -151,7 +152,6 @@ if(isset($_POST['update_product'])){
     </section>
 
     <section class="edit-product-form">
-
         <?php
       if(isset($_GET['update'])){
          $update_id = $_GET['update'];
@@ -185,7 +185,7 @@ if(isset($_POST['update_product'])){
 
 
     <!-- custom admin js file link  -->
-    <script src="js/admin_script.js"></script>
+    <script src="js/adminfeatured.js"></script>
 
 </body>
 

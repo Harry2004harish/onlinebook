@@ -46,7 +46,7 @@ if(isset($_GET['delete'])){
    $fetch_delete_image = mysqli_fetch_assoc($delete_image_query);
    unlink('uploaded_img/'.$fetch_delete_image['image']);
    mysqli_query($conn, "DELETE FROM `featuredproduct` WHERE id = '$delete_id'") or die('query failed');
-   header('location:admin_products.php');
+   header('location:admin_featuredproduct.php');
 }
 
 if(isset($_POST['update_product'])){
@@ -74,7 +74,7 @@ if(isset($_POST['update_product'])){
       }
    }
 
-   header('location:admin_featuredproducts.php');
+   header('location:admin_featuredproduct.php');
 
 }
 

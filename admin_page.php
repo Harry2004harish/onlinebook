@@ -82,9 +82,12 @@ if(!isset($admin_id)){
             <div class="box">
                 <?php 
             $select_products = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
+            $select_products1 = mysqli_query($conn, "SELECT * FROM `featuredproduct`") or die('query failed');
             $number_of_products = mysqli_num_rows($select_products);
+            $number_of_products2 = mysqli_num_rows($select_products1);
+            $number_of_products3= $number_of_products+ $number_of_products2;
          ?>
-                <h3><?php echo $number_of_products; ?></h3>
+                <h3><?php echo $number_of_products3; ?></h3>
                 <p>products added</p>
             </div>
 

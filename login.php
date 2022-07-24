@@ -57,18 +57,6 @@ if(isset($_POST['submit'])){
 
 <body>
 
-    <?php
-if(isset($message)){
-   foreach($message as $message){
-      echo '
-      <div class="message">
-         <span>'.$message.'</span>
-         <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-      </div>
-      ';
-   }
-}
-?>
 
     <!-- <div class="form-container"> -->
 
@@ -79,7 +67,7 @@ if(isset($message)){
             <input type="submit" name="submit" value="login now" class="btn">
             <p>don't have an account? <a href="register.php">register now</a></p> -->
     <div class="login-form-container">
-        <div id="close-login-btn" class="fas fa-times"></div>
+        <!-- <div id="close-login-btn" class="fas fa-times"></div> -->
         <form action="" method="post">
             <h3>Login</h3>
             <span>Email</span>
@@ -88,12 +76,21 @@ if(isset($message)){
             <input type="password" name="password" class="box" placeholder="Enter your password" id="" required
                 class="box">
             <div class="checkbox">
-                <input type="checkbox" name="" id="remember-me">
-                <label for="remember-me">Remember me</label>
             </div>
+            <?php
+            if(isset($message)){
+               foreach($message as $message){
+                  echo '
+                  <div class="message">
+                     <span>'.$message.'</span>
+                     <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+                  </div>
+                  ';
+               }
+            }
+            ?>
             <input type="submit" name="submit" value="login now" class="btn">
             <!-- <input type="submit" value="sign in" class="btn"> -->
-            <p>Forget Password ? <a href="#">Click Here</a></p>
             <p>Don't Have an account ? <a href="register.php">Create One</a>
             </p>
         </form>

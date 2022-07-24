@@ -20,12 +20,12 @@ if(isset($_POST['add_product'])){
    $image_folder = 'uploaded_img/'.$image;
    $product_desc=$_POST['product_desc'];
 
-   $select_product_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name'") or die('query failed');
+   $select_product_name = mysqli_query($conn, "SELECT name FROM `featuredproduct` WHERE name = '$name'") or die('query failed');
 
    if(mysqli_num_rows($select_product_name) > 0){
       $message[] = 'product name already added';
    }else{
-      $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name, price, image,product_desc) VALUES('$name', '$price', '$image','$product_desc')") or die('query failed');
+      $add_product_query = mysqli_query($conn, "INSERT INTO `featuredproduct`(name, price, image,product_desc) VALUES('$name', '$price', '$image','$product_desc')") or die('query failed');
 
       if($add_product_query){
          if($image_size > 2000000){
@@ -42,10 +42,10 @@ if(isset($_POST['add_product'])){
 
 if(isset($_GET['delete'])){
    $delete_id = $_GET['delete'];
-   $delete_image_query = mysqli_query($conn, "SELECT image FROM `products` WHERE id = '$delete_id'") or die('query failed');
+   $delete_image_query = mysqli_query($conn, "SELECT image FROM `featuredproduct` WHERE id = '$delete_id'") or die('query failed');
    $fetch_delete_image = mysqli_fetch_assoc($delete_image_query);
    unlink('uploaded_img/'.$fetch_delete_image['image']);
-   mysqli_query($conn, "DELETE FROM `products` WHERE id = '$delete_id'") or die('query failed');
+   mysqli_query($conn, "DELETE FROM `featuredproduct` WHERE id = '$delete_id'") or die('query failed');
    header('location:admin_products.php');
 }
 
@@ -56,7 +56,7 @@ if(isset($_POST['update_product'])){
    $update_price = $_POST['update_price'];
    $update_product_desc=$_POST['update_product_desc'];
 
-   mysqli_query($conn, "UPDATE `products` SET name = '$update_name', price = '$update_price',product_desc='$update_product_desc' WHERE id = '$update_p_id'") or die('query failed');
+   mysqli_query($conn, "UPDATE `featuredproduct` SET name = '$update_name', price = '$update_price',product_desc='$update_product_desc' WHERE id = '$update_p_id'") or die('query failed');
 
    $update_image = $_FILES['update_image']['name'];
    $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
@@ -68,13 +68,13 @@ if(isset($_POST['update_product'])){
       if($update_image_size > 2000000){
          $message[] = 'image file size is too large';
       }else{
-         mysqli_query($conn, "UPDATE `products` SET image = '$update_image' WHERE id = '$update_p_id'") or die('query failed');
+         mysqli_query($conn, "UPDATE `featuredproduct` SET image = '$update_image' WHERE id = '$update_p_id'") or die('query failed');
          move_uploaded_file($update_image_tmp_name, $update_folder);
          unlink('uploaded_img/'.$update_old_image);
       }
    }
 
-   header('location:admin_products.php');
+   header('location:admin_featuredproducts.php');
 
 }
 
@@ -105,7 +105,7 @@ if(isset($_POST['update_product'])){
 
     <section class="add-products">
 
-        <h1 class="title">shop products</h1>
+        <h1 class="title">Featured products</h1>
 
         <form action="" method="post" enctype="multipart/form-data">
             <h3>add product</h3>
@@ -127,7 +127,7 @@ if(isset($_POST['update_product'])){
         <div class="box-container">
 
             <?php
-         $select_products = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
+         $select_products = mysqli_query($conn, "SELECT * FROM `featuredproduct`") or die('query failed');
          if(mysqli_num_rows($select_products) > 0){
             while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>
@@ -136,8 +136,9 @@ if(isset($_POST['update_product'])){
                 <div class="name"><?php echo $fetch_products['name']; ?></div>
                 <div class="price">Rs <?php echo $fetch_products['price']; ?>/-</div>
                 <!-- <div class="product_desc"><?php echo $fetch_products['product_desc']; ?></div> -->
-                <a href="admin_products.php?update=<?php echo $fetch_products['id']; ?>" class="option-btn">update</a>
-                <a href="admin_products.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-btn"
+                <a href="admin_featuredproduct.php?update=<?php echo $fetch_products['id']; ?>"
+                    class="option-btn">update</a>
+                <a href="admin_featuredproduct.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-btn"
                     onclick="return confirm('delete this product?');">delete</a>
             </div>
             <?php
@@ -151,11 +152,10 @@ if(isset($_POST['update_product'])){
     </section>
 
     <section class="edit-product-form">
-
         <?php
       if(isset($_GET['update'])){
          $update_id = $_GET['update'];
-         $update_query = mysqli_query($conn, "SELECT * FROM `products` WHERE id = '$update_id'") or die('query failed');
+         $update_query = mysqli_query($conn, "SELECT * FROM `featuredproduct` WHERE id = '$update_id'") or die('query failed');
          if(mysqli_num_rows($update_query) > 0){
             while($fetch_update = mysqli_fetch_assoc($update_query)){
    ?>
@@ -184,13 +184,8 @@ if(isset($_POST['update_product'])){
     </section>
 
 
-
-
-
-
-
     <!-- custom admin js file link  -->
-    <script src="js/admin_script.js"></script>
+    <script src="js/adminfeatured.js"></script>
 
 </body>
 

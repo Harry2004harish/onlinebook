@@ -271,6 +271,52 @@ body{
     cursor: pointer;
 }
 
+/* banner section start */
+.banner{
+    background: url(../image/rebort.jpg);
+    width: 100%;
+    height: 40vh;
+}
+
+.banner-container
+{
+    padding-top: 18vh;
+    padding-left: 5vh;
+}
+
+.banner-content{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-content h1{
+    font-size: 30px;
+}
+
+.banner-content p{
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.banner-content button{
+    width: 20%;
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.banner-content button a{
+    color: #000;
+    font-weight: 500;
+}
+
+.banner-content button:hover{
+    cursor: pointer;
+    background: #088178;
+}
+
 /* home section */
 
 section{
@@ -307,93 +353,10 @@ section{
     transform: rotate(90deg);
  }
 
-.home{
-    background: url(../image/banner-bg.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.home .row{
-    display:flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap:1.5rem;
-}
-
-.home .row .content{
-    flex:1 1 42rem;
-}
-
-.home .row .books-slider{
-    flex:1 1 42rem;
-    text-align: center;
-    margin-top: 2rem;
-}
-
-.home .row .books-slider a img{
-    height: 25rem;
-}
-
-.home .row .books-slider a:hover img{
-    transform: scale(.9);
-}
-
-.home .row .books-slider .stand{
-    width:100%;
-    margin-top: -2rem;
-}
-
-.home .row .content h3{
-    color:var(--black);
-    font-size: 4.5rem;
-}
-
-.home .row .content p{
-    color:var(--light-color);
-    font-size: 1.4rem;
-    line-height: 2;
-    padding:1rem 0;
-}
 
 /* Home section start */
 
-.icons-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap:1.5rem;
 
-}
-
-.icons-container .icons{
-    display: flex;
-    align-items: center;
-    gap:1.5rem;
-    padding:2rem 0;
-}
-
-.icons-container .icons i{
-    font-size: 3.5rem;
-    cursor: pointer;
-}
-
-.icons-container .icons:hover i{
-    color: var(--dark-color);
-}
-
-.icons-container .icons h3{
-    font-size: 2.2rem;
-    color:var(--black);
-    padding-bottom: .5rem;
-}
-
-.icons-container .icons p{
-    font-size: 1.4rem;
-    color:var(--light-color);
-}
-
-.icons-container .icons a{
-    color: var(--black);
-}
 
 /* home section ends */
 

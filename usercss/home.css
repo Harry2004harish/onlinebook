@@ -441,6 +441,11 @@ section{
     font-size: 2rem;
     color:var(--black);
  }
+ .products .box-container .box .author{
+    padding-bottom: 0.4rem;
+    font-size: 1.5rem;
+    color:var(--black);
+ }
  
  .products .box-container .box .qty{
     width: 100%;
@@ -564,7 +569,58 @@ section{
  .footer .credit span{
     color:var(--purple);
  }
- 
+/* product detail */
+
+#prodetails
+{
+    display: flex;
+    margin-top: 20px;
+}
+
+#prodetails .single-pro-image{
+    width: 40%;
+    margin-right: 50px;
+}
+
+
+
+
+#prodetails .single-pro-details{
+    width: 50%;
+    padding-top: 30px;
+}
+#prodetails .single-pro-details h6{
+    font-size: 15px;
+    color: gray;
+}
+#prodetails .single-pro-details h4{
+    padding: 25px 0 10px 0px;
+    font-size: 20px;
+}
+
+#prodetails .single-pro-details h2{
+    font-size: 20px;
+    font-weight: bold;
+    color:#27AE60;
+}
+
+#prodetails .single-pro-details p{
+    font-size: medium;
+    text-transform: capitalize;
+    line-height: 20px;
+    
+}
+
+#prodetails .single-pro-details .addtocart{
+    margin-top: 10px;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    width: 50%;
+    background: #27AE60;
+    border-radius: 45px;
+}
+
  
 
 
@@ -638,7 +694,11 @@ section{
         font-size: 3.5rem;
     }
 }
-
+.header .header-1 .logo span{
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color:purple;
+}
 @media (max-width:450px){
 
     html{

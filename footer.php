@@ -39,3 +39,4 @@
     <p class="credit"> &copy; copyright @ <?php echo date('Y'); ?> by <span>infosys</span> </p>
 
 </section>
+<script src="js/script.js"></script>

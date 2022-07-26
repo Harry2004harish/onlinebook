@@ -9,6 +9,7 @@ if(isset($message)){
       ';
    }
 }
+$user_id = $_SESSION['user_id'];
 ?>
 <?php
     $select_cart_number = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');

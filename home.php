@@ -70,12 +70,14 @@ if(isset($_POST['add_to_cart'])){
         <div class="box-container">
 
             <?php  
-         $select_products = mysqli_query($conn, "SELECT * FROM `products` LIMIT 6") or die('query failed');
+         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='latestproduct' LIMIT 6") or die('query failed');
          if(mysqli_num_rows($select_products) > 0){
             while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>
             <form action="" method="post" class="box">
-                <img class="image" src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt="">
+                <a href="productdetail.php?id=<?php echo $fetch_products['id']?>">
+                    <img class="image" src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt="">
+                </a>
                 <div class="name"><?php echo $fetch_products['name']; ?></div>
                 <div class="price">NRS <?php echo $fetch_products['price']; ?>/-</div>
                 <div class="author">By: <?php echo $fetch_products['author']; ?></div>

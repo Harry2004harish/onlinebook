@@ -48,7 +48,7 @@ if(isset($_POST['add_to_cart'])){
         <div class="box-container">
 
             <?php  
-         $select_products = mysqli_query($conn, "SELECT * FROM `featuredproduct`") or die('query failed');
+         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='featureproduct'") or die('query failed');
          if(mysqli_num_rows($select_products) > 0){
             while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>

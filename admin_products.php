@@ -21,12 +21,12 @@ if(isset($_POST['add_product'])){
    $product_desc=$_POST['product_desc'];
    $author=$_POST['author'];
 
-   $select_product_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name'") or die('query failed');
+   $select_product_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name'and type='latestproduct'") or die('query failed');
 
    if(mysqli_num_rows($select_product_name) > 0){
       $message[] = 'product name already added';
    }else{
-      $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name, price, image,product_desc,author) VALUES('$name', '$price', '$image','$product_desc','$author')") or die('query failed');
+      $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name, price, image,product_desc,author,type) VALUES('$name', '$price', '$image','$product_desc','$author','latestproduct')") or die('query failed');
 
       if($add_product_query){
          if($image_size > 2000000){
@@ -130,7 +130,7 @@ if(isset($_POST['update_product'])){
         <div class="box-container">
 
             <?php
-         $select_products = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
+         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='latestproduct'") or die('query failed');
          if(mysqli_num_rows($select_products) > 0){
             while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>

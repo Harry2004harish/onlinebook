@@ -9,20 +9,12 @@ if(isset($message)){
       ';
    }
 }
-$user_id = NULL;
-
-if(isset($_SESSION['user_id'])){
-    $user_id = $_SESSION['user_id'];
-}
+$user_id = $_SESSION['user_id'];
 ?>
 <?php
-
-    $cart_rows_number = 0;
-    if($user_id !== NULL){
-        $select_cart_number = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
-        $cart_rows_number = mysqli_num_rows($select_cart_number); 
-    }
-    ?>
+    $select_cart_number = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
+     $cart_rows_number = mysqli_num_rows($select_cart_number); 
+ ?>
 
 <head>
     <link rel="stylesheet" href="usercss/home.css">

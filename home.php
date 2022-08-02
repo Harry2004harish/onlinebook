@@ -4,12 +4,16 @@ include 'config.php';
 
 session_start();
 
-$user_id = $_SESSION['user_id'];
+$user_id = NULL;
 
-if(!isset($user_id)){
-   header('location:login.php');
+if(isset($_SESSION['user_id'])){
+    $user_id = $_SESSION['user_id'];
 }
+
 if(isset($_POST['add_to_cart'])){
+    if($user_id == NULL){
+        header("location:login.php?product_id=". $_POST["product_id"]);
+    }
     $product_name = $_POST['product_name'];
     $product_price = $_POST['product_price'];
     $product_image = $_POST['product_image'];
@@ -34,10 +38,6 @@ if(isset($_POST['add_to_cart'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-
-    <!-- slider -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
     <!--Font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -82,6 +82,7 @@ if(isset($_POST['add_to_cart'])){
                 <div class="price">NRS <?php echo $fetch_products['price']; ?>/-</div>
                 <div class="author">By: <?php echo $fetch_products['author']; ?></div>
                 <!-- <input type="number" min="1" name="product_quantity" value="1" class="qty"> -->
+                <input type="hidden" name="product_id" value="<?php echo $fetch_products['id']; ?>">
                 <input type="hidden" name="product_name" value="<?php echo $fetch_products['name']; ?>">
                 <input type="hidden" name="product_price" value="<?php echo $fetch_products['price']; ?>">
                 <input type="hidden" name="product_image" value="<?php echo $fetch_products['image']; ?>">

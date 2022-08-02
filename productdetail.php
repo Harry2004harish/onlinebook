@@ -2,9 +2,16 @@
 
 include 'config.php';
 session_start();
-$user_id = $_SESSION['user_id'];
+$user_id = NULL;
+
+if(isset($_SESSION['user_id'])){
+    $user_id = $_SESSION['user_id'];
+}
 
 if(isset($_POST['add_to_cart'])){
+    if($user_id == NULL){
+        header("location:login.php?product_id=". $_POST["product_id"]);
+    }
     $product_name = $_POST['product_name'];
     $product_price = $_POST['product_price'];
     $product_image = $_POST['product_image'];
@@ -19,6 +26,7 @@ if(isset($_POST['add_to_cart'])){
        $message[] = 'product added to cart!';
     }
  }
+
 ?>
 
 <head>

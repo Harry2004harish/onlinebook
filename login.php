@@ -6,6 +6,7 @@ session_start();
 if(isset($_POST['submit'])){
 
    $email = mysqli_real_escape_string($conn, $_POST['email']);
+   // The MD5 message-digest algorithm is a cryptographically broken but still widely used hash function producing a 128-bit hash value. 
    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
 
    $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
@@ -47,56 +48,25 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
 
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="usercss/style.css">
 
 </head>
 
 <body>
+    <?php include "header.php"?>
+    <div class="form-container">
 
-    <!-- <div class="form-container"> -->
-
-    <!-- <form action="" method="post"> -->
-    <!-- <h3>login now</h3>
+        <form action="" method="post">
+            <h3>login now</h3>
             <input type="email" name="email" placeholder="enter your email" required class="box">
             <input type="password" name="password" placeholder="enter your password" required class="box">
             <input type="submit" name="submit" value="login now" class="btn">
-            <p>don't have an account? <a href="register.php">register now</a></p> -->
-    <div class="login-form-container">
-        <!-- <div id="close-login-btn" class="fas fa-times"></div> -->
-        <form action="" method="post">
-            <h3>Login</h3>
-            <span>Email</span>
-            <input type="email" name="email" class="box" placeholder="Enter your email" id="" required class="box">
-            <span>Password</span>
-            <input type="password" name="password" class="box" placeholder="Enter your password" id="" required
-                class="box">
-            <div class="checkbox">
-            </div>
-            <?php
-            if(isset($message)){
-               foreach($message as $message){
-                  echo '
-                  <div class="message">
-                     <span>'.$message.'</span>
-                     <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-                  </div>
-                  ';
-               }
-            }
-            ?>
-            <input type="submit" name="submit" value="login now" class="btn">
-            <!-- <input type="submit" value="sign in" class="btn"> -->
-            <p>Don't Have an account ? <a href="register.php">Create One</a>
-            </p>
-        </form>
-        <!-- </div> -->
+            <p>don't have an account? <a href="register.php">Create</a></p>
         </form>
 
     </div>
+    <?php include "footer.php"?>
 
 </body>
 

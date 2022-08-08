@@ -25,28 +25,25 @@ if(isset($_SESSION['user_id'])){
     ?>
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
     <link rel="stylesheet" href="usercss/home.css">
 </head>
 
 <header class="header">
     <div class="header-1">
         <a href="#" class="logo"><i class=" fas fa-book"></i> Info<span>Sys</span></a>
-        <form action="" class="search-form">
-            <input type="text" name="search" placeholder="Search Here" id="search-box">
+        <!-- <form action="" class="search-form">
+            <a href="search_page.php" class="fas fa-search"></a>
             <label for="search-box" class="fas fa-search"></label>
-        </form>
+        </form> -->
 
         <div class="icons">
-            <div id="search-btn" class="fas fa-search"></div>
+            <a href="search_page.php" class="fas fa-search"></a>
             <a href="#" class="fas fa-heart"></a>
-            <div id="user-btn" class="fas fa-user"></div>
+            <a id="user-btn" href="userprofile.php" class="fas fa-user"></a>
             <a href="cart.php" class="fas fa-shopping-cart cart">(<?php echo $cart_rows_number; ?>)</a>
         </div>
-        <!-- <div class="user-box">
-            <p>username : <span><?php echo $_SESSION['user_name']; ?></span></p>
-            <p>email : <span><?php echo $_SESSION['user_email']; ?></span></p>
-            <a href="logout.php" class="delete-btn">logout</a>
-        </div> -->
     </div>
 
     <!-- navi -->

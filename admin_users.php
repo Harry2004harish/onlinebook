@@ -49,6 +49,14 @@ if(isset($_GET['delete'])){
          while($fetch_users = mysqli_fetch_assoc($select_users)){
       ?>
             <div class="box">
+
+                <?php
+            if($fetch_users['image'] == ''){
+            echo '<img src="image/default-avatar.png">';
+         }else{
+            echo '<img src="uploaded_img/'.$fetch_users['image'].'">';
+         }
+         ?>
                 <p> user id : <span><?php echo $fetch_users['id']; ?></span> </p>
                 <p> username : <span><?php echo $fetch_users['name']; ?></span> </p>
                 <p> email : <span><?php echo $fetch_users['email']; ?></span> </p>

@@ -24,8 +24,8 @@ if(isset($_POST['add_to_cart'])){
     if(mysqli_num_rows($check_cart_numbers) > 0){
        $message[] = 'already added to cart!';
     }else{
-       mysqli_query($conn, "INSERT INTO `cart`(user_id, name, price, image) VALUES('$user_id', '$product_name', '$product_price', '$product_image')") or die('query failed');
-       $message[] = 'product added to cart!';
+        mysqli_query($conn, "INSERT INTO `cart`(user_id, name, price, image,quantity) VALUES('$user_id', '$product_name', '$product_price', '$product_image',1)") or die('query failed');
+        $message[] = 'product added to cart!';
     }
  }
 
@@ -58,7 +58,7 @@ if(isset($_POST['add_to_cart'])){
             <h3>Hand Picked Book to your door.</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quod? Reiciendis ut porro iste totam.
             </p>
-            <a href="about.php" class="white-btn">discover more</a>
+            <a href="shop.php" class="white-btn">discover more</a>
         </div>
 
     </section>

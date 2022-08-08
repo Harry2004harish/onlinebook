@@ -20,13 +20,14 @@ if(isset($_POST['add_product'])){
    $image_folder = 'uploaded_img/'.$image;
    $product_desc=$_POST['product_desc'];
    $author=$_POST['author'];
+   $genres=$_POST['genres'];
 
    $select_product_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name'and type='latestproduct'") or die('query failed');
 
    if(mysqli_num_rows($select_product_name) > 0){
       $message[] = 'product name already added';
    }else{
-      $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name, price, image,product_desc,author,type) VALUES('$name', '$price', '$image','$product_desc','$author','latestproduct')") or die('query failed');
+      $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name, price, image,product_desc,author,type,genres) VALUES('$name', '$price', '$image','$product_desc','$author','latestproduct','$genres')") or die('query failed');
 
       if($add_product_query){
          if($image_size > 2000000){
@@ -57,8 +58,9 @@ if(isset($_POST['update_product'])){
    $update_price = $_POST['update_price'];
    $update_product_desc=$_POST['update_product_desc'];
    $update_author=$_POST['update_author'];
+   $update_genres=$_POST['update_genres'];
 
-   mysqli_query($conn, "UPDATE `products` SET name = '$update_name', price = '$update_price',product_desc='$update_product_desc',author='$update_author' WHERE id = '$update_p_id'") or die('query failed');
+   mysqli_query($conn, "UPDATE `products` SET name = '$update_name', price = '$update_price',product_desc='$update_product_desc',author='$update_author', genres='$update_genres' WHERE id = '$update_p_id'") or die('query failed');
 
    $update_image = $_FILES['update_image']['name'];
    $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
@@ -114,6 +116,7 @@ if(isset($_POST['update_product'])){
             <input type="text" name="name" class="box" placeholder="enter product name" required>
             <input type="number" min="0" name="price" class="box" placeholder="enter product price" required>
             <input type="text" name="author" class="box" placeholder="author name" required>
+            <input type="text" name="genres" class="box" placeholder="Enter Genres" required>
             <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
             <input type="text" name="product_desc" class="box" placeholder="enter product description" required>
             <input type="submit" value="add product" name="add_product" class="btn">
@@ -165,19 +168,23 @@ if(isset($_POST['update_product'])){
    ?>
         <form action="" method="post" enctype="multipart/form-data">
             <input type="hidden" name="update_p_id" value="<?php echo $fetch_update['id']; ?>">
-            <input type="hidden" name="update_old_image" value="<?php echo $fetch_update['image']; ?>">
+            <input type="hidden" name="update_old_image" class="image" value="<?php echo $fetch_update['image']; ?>">
             <img src="uploaded_img/<?php echo $fetch_update['image']; ?>" alt="">
-            <input type="text" name="update_name" value="<?php echo $fetch_update['name']; ?>" class="box" required
-                placeholder="enter product name">
-            <input type="number" name="update_price" value="<?php echo $fetch_update['price']; ?>" min="0" class="box"
-                required placeholder="enter product price">
-            <input type="text" name="update_author" value="<?php echo $fetch_update['author']; ?>" class="box" required
-                placeholder="enter author name">
-            <input type="text" name="update_product_desc" value="<?php echo $fetch_update['product_desc']; ?>"
-                class="box" required placeholder="product description">
-            <input type="file" class="box" name="update_image" accept="image/jpg, image/jpeg, image/png">
+            <div class="field">
+                <input type="text" name="update_name" value="<?php echo $fetch_update['name']; ?>" class="box" required
+                    placeholder="enter product name">
+                <input type="number" name="update_price" value="<?php echo $fetch_update['price']; ?>" min="0"
+                    class="box" required placeholder="enter product price">
+                <input type="text" name="update_author" value="<?php echo $fetch_update['author']; ?>" class="box"
+                    required placeholder="enter Author">
+                <input type="text" name="update_genres" value="<?php echo $fetch_update['genres']; ?>" class="box"
+                    required placeholder="enter Genres">
+                <input type="file" class="desc" name="update_image" accept="image/jpg, image/jpeg, image/png">
+                <input type="text" name="update_product_desc" value="<?php echo $fetch_update['product_desc']; ?>"
+                    class="desc" required placeholder="product description">
+            </div>
             <input type="submit" value="update" name="update_product" class="btn">
-            <input type="reset" value="cancel" id="close-update" class="option-btn">
+            <input type="button" value="cancel" id="close-update" class="option-btn">
         </form>
         <?php
          }
@@ -192,12 +199,32 @@ if(isset($_POST['update_product'])){
 
 
 
-
-
-
     <!-- custom admin js file link  -->
-    <script src="js/admin_script.js"></script>
+    <script>
+    let navbar = document.querySelector(".header .navbar");
+    let accountBox = document.querySelector(".header .account-box");
 
+    document.getElementById("close-update").addEventListener("click", () => {
+        document.querySelector(".edit-product-form").style.display = "none";
+        window.location.href = "admin_products.php";
+    });
+
+
+    document.querySelector("#menu-btn").onclick = () => {
+        navbar.classList.toggle("active");
+        accountBox.classList.remove("active");
+    };
+
+    document.querySelector("#user-btn").onclick = () => {
+        accountBox.classList.toggle("active");
+        navbar.classList.remove("active");
+    };
+
+    window.onscroll = () => {
+        navbar.classList.remove("active");
+        accountBox.classList.remove("active");
+    };
+    </script>
 </body>
 
 </html>

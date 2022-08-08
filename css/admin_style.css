@@ -286,7 +286,17 @@ section{
    max-width: 50rem;
    margin:0 auto;
 }
-
+/* .input-field input {
+   outline: none;
+   font-size: 14px;
+   font-weight: 400;
+   color: #333;
+   border-radius: 5px;
+   border: 1px solid #aaa;
+   padding: 0 15px;
+   height: 42px;
+   margin: 8px 0;
+} */
 .add-products form h3{
    font-size: 2.5rem;
    text-transform: uppercase;
@@ -299,6 +309,17 @@ section{
    background-color: var(--light-bg);
    border-radius: .5rem;
    margin:1rem 0;
+   padding:1.2rem 1.4rem;
+   color:var(--black);
+   font-size: 1.8rem;
+   border:var(--border);
+}
+.add-products form .desc{
+   width: 90%;
+   background-color: var(--light-bg);
+   border-radius: .5rem;
+   margin:1rem 0;
+   height: 8rem;
    padding:1.2rem 1.4rem;
    color:var(--black);
    font-size: 1.8rem;
@@ -356,8 +377,14 @@ section{
    top:0; left:0; 
    z-index: 1200;
    width: 100%;
+   
 }
-
+.edit-product-form form .field{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
 .edit-product-form form{
    width: 50rem;
    padding:2rem;
@@ -367,12 +394,30 @@ section{
 }
 
 .edit-product-form form img{
-   height: 25rem;
+   display: block;
+   height: 20rem;
+   margin-bottom: 1rem;
+   text-align: center;
+   padding-left: 33%;
+}
+.edit-product-form form .image{
+   height: 20rem;
    margin-bottom: 1rem;
 }
 
 .edit-product-form form .box{
-   margin:1rem 0;
+   margin:0.6rem 0;
+   padding:1.2rem 1.4rem;
+   border:var(--border);
+   border-radius: .5rem;
+   background-color: var(--light-bg);
+   font-size: 1.8rem;
+   color:var(--black);
+   width: calc(100% / 2 - 15px);
+   flex-direction: column;
+}
+.edit-product-form form .desc{
+   margin:0.6rem 0;
    padding:1.2rem 1.4rem;
    border:var(--border);
    border-radius: .5rem;
@@ -381,7 +426,26 @@ section{
    color:var(--black);
    width: 100%;
 }
+/* new code */
+/* .edit-product-form form  .input-field{
+   display: flex;
+   width: calc(100% / 2 - 15px);
+   flex-direction: column;
+   margin: 4px 0;
+}
+.input-field input, select{
+   outline: none;
+   font-size: 14px;
+   font-weight: 400;
+   color: #333;
+   border-radius: 5px;
+   border: 1px solid #aaa;
+   padding: 0 15px;
+   height: 42px;
+   margin: 8px 0;
+} */
 
+/* end of new code */
 .orders .box-container{
    display: grid;
    grid-template-columns: repeat(auto-fit, 30rem);
@@ -490,11 +554,19 @@ section{
 .messages .box-container .box .delete-btn{
    margin-top: 0;
 }
+.fa-user{
+size: 100%;
+}
+.box img{
+   height: 20rem;
+    padding-top: 4px;
+}
 
-
-
-
-
+.icons img{
+height: 6rem;
+    padding-top: 4px;
+    border-radius: 50%;
+}
 
 
 

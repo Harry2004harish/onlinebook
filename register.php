@@ -35,17 +35,19 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register</title>
 
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/registeruser.css">
+    <link rel="stylesheet" href="usercss/style.css">
 
 
 </head>
 
 <body>
-    <!-- <div class="form-container">
+
+    <?php include "header.php"?>
+
+    <div class="form-container">
 
         <form action="" method="post">
             <h3>register now</h3>
@@ -53,63 +55,13 @@ if(isset($_POST['submit'])){
             <input type="email" name="email" placeholder="enter your email" required class="box">
             <input type="password" name="password" placeholder="enter your password" required class="box">
             <input type="password" name="cpassword" placeholder="confirm your password" required class="box">
-            <select name="user_type" class="box">
-                <option value="user">user</option>
-                <option value="admin">admin</option>
-            </select>
             <input type="submit" name="submit" value="register now" class="btn">
-            <p>already have an account? <a href="login.php">login now</a></p>
+            <p>already have an account? <a href="login.php">login</a></p>
         </form>
 
-    </div> -->
-    <div class="signup-container">
-        <div class="signup-header">
-            <h2>Create Account</h2>
-        </div>
-        <form action="" method="post" class="signup-form" id="signup-form">
-            <div class="form-control">
-                <label>Username</label>
-                <input type="text" name="name" placeholder="username" require class="box">
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
-            </div>
-            <div class="form-control">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="email address" require class="box">
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
-            </div>
-            <div class="form-control">
-                <label>Password</label>
-                <input type="password" name="password" placeholder="password" required class="box">
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
-            </div>
-            <div class="form-control">
-                <label>Confirm Password</label>
-                <input type="password" name="cpassword" placeholder="confirm password " required class="box">
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error message</small>
-                <?php
-if(isset($message)){
-   foreach($message as $message){
-      echo '
-      <div class="msg">
-         <span>'.$message.'</span>
-         <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-      </div>
-      ';
-   }
-}
-?>
-            </div>
-            <button type="submit" name="submit" value="register now" class="btn">Submit</button>
-        </form>
     </div>
+    <?php include "footer.php"?>
+
 </body>
 
 </html>

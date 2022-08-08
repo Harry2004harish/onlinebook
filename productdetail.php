@@ -22,7 +22,7 @@ if(isset($_POST['add_to_cart'])){
     if(mysqli_num_rows($check_cart_numbers) > 0){
        $message[] = 'already added to cart!';
     }else{
-       mysqli_query($conn, "INSERT INTO `cart`(user_id, name, price, image) VALUES('$user_id', '$product_name', '$product_price', '$product_image')") or die('query failed');
+       mysqli_query($conn, "INSERT INTO `cart`(user_id, name, price, image,quantity) VALUES('$user_id', '$product_name', '$product_price', '$product_image',1)") or die('query failed');
        $message[] = 'product added to cart!';
     }
  }
@@ -52,7 +52,7 @@ $id = $_GET["id"];
                 <div class="name"><?php echo $fetch_products['name']; ?></div>
             </h4>
             <h2>
-                <div class="price">NRP <?php echo $fetch_products['price']; ?>/-</div>
+                <div class="price">NRS <?php echo $fetch_products['price']; ?>/-</div>
             </h2>
             <input type="submit" value="add to cart" name="add_to_cart" class="btn">
             <h4>Product Details</h4>

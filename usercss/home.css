@@ -598,6 +598,10 @@ section{
     padding: 25px 0 10px 0px;
     font-size: 20px;
 }
+#prodetails .single-pro-details h3{
+    font-size: 12px;
+    padding-bottom: 5px;
+}
 #prodetails .single-pro-details .product_desc{
     padding: 1px 0 10px 0px;
     font-size: 15px;
@@ -606,7 +610,7 @@ section{
 #prodetails .single-pro-details h2{
     font-size: 20px;
     font-weight: bold;
-    color:#27AE60;
+    color:#ff726f;
 }
 
 #prodetails .single-pro-details p{

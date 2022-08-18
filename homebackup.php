@@ -52,7 +52,8 @@ if(isset($_POST['add_to_cart'])){
 
         <div class="content">
             <h3>Hand Picked Book to your door.</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quod? Reiciendis ut porro iste totam.
+            <p>We offer a tremendous gathering of books in the various classifications of Fiction, Non-fiction,
+                Biographies, History, Religions, Self Help, Children.
             </p>
             <a href="about.php" class="white-btn">discover more</a>
         </div>

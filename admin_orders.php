@@ -54,7 +54,7 @@ if(isset($_GET['delete'])){
 
         <div class="box-container">
             <?php
-      $select_orders = mysqli_query($conn, "SELECT * FROM `orders`") or die('query failed');
+      $select_orders = mysqli_query($conn, "SELECT * FROM `orders`ORDER BY id DESC") or die('query failed');
       if(mysqli_num_rows($select_orders) > 0){
          while($fetch_orders = mysqli_fetch_assoc($select_orders)){
       ?>
@@ -66,7 +66,7 @@ if(isset($_GET['delete'])){
                 <p> email : <span><?php echo $fetch_orders['email']; ?></span> </p>
                 <p> address : <span><?php echo $fetch_orders['address']; ?></span> </p>
                 <p> total products : <span><?php echo $fetch_orders['total_products']; ?></span> </p>
-                <p> total price : <span>$<?php echo $fetch_orders['total_price']; ?>/-</span> </p>
+                <p> total price : <span>NRS <?php echo $fetch_orders['total_price']; ?>/-</span> </p>
                 <p> payment method : <span><?php echo $fetch_orders['method']; ?></span> </p>
                 <form action="" method="post">
                     <input type="hidden" name="order_id" value="<?php echo $fetch_orders['id']; ?>">

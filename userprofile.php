@@ -51,7 +51,7 @@ if(!isset($user_id)){
         </div>
 
     </div>
-    <!-- <?php include 'userorderdetail.php'; ?> -->
+    <?php include 'userorderdetail.php'; ?>
     <?php include 'footer.php'; ?>
 </body>
 

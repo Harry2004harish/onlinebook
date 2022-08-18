@@ -45,7 +45,7 @@ if(isset($_GET['delete'])){
 
         <div class="box-container">
             <?php
-      $select_message = mysqli_query($conn, "SELECT * FROM `message`") or die('query failed');
+      $select_message = mysqli_query($conn, "SELECT * FROM `message`ORDER BY id DESC") or die('query failed');
       if(mysqli_num_rows($select_message) > 0){
          while($fetch_message = mysqli_fetch_assoc($select_message)){
       

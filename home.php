@@ -37,7 +37,7 @@ if(isset($_POST['add_to_cart'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>bookstore</title>
 
     <!--Font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -56,7 +56,7 @@ if(isset($_POST['add_to_cart'])){
 
         <div class="content">
             <h3>Hand Picked Book to your door.</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quod? Reiciendis ut porro iste totam.
+            <p>It's impossible to walk thorugh a book store and be in the bad mood at the same time.
             </p>
             <a href="shop.php" class="white-btn">discover more</a>
         </div>
@@ -70,7 +70,7 @@ if(isset($_POST['add_to_cart'])){
         <div class="box-container">
 
             <?php  
-         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='latestproduct' LIMIT 6") or die('query failed');
+         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='latestproduct' ORDER BY id DESC LIMIT 6") or die('query failed');
          if(mysqli_num_rows($select_products) > 0){
             while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>
@@ -115,8 +115,8 @@ if(isset($_POST['add_to_cart'])){
 
             <div class="content">
                 <h3>about us</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit quos enim minima ipsa dicta officia
-                    corporis ratione saepe sed adipisci?</p>
+                <p>We offer a tremendous gathering of books in the various classifications of Fiction, Non-fiction,
+                    Biographies, History, Religions, Self Help, Children.</p>
                 <a href="about.php" class="btn">read more</a>
             </div>
 

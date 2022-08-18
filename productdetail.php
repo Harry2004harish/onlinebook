@@ -15,6 +15,8 @@ if(isset($_POST['add_to_cart'])){
     $product_name = $_POST['product_name'];
     $product_price = $_POST['product_price'];
     $product_image = $_POST['product_image'];
+    $product_author=$_POST['author'];
+    $product_genres=$_POST['genres'];
  //    $product_quantity = $_POST['product_quantity'];
  
     $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'") or die('query failed');
@@ -33,6 +35,7 @@ if(isset($_POST['add_to_cart'])){
     <link rel="stylesheet" href="usercss/home.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 </head>
+<title>product detail</title>
 <?php  include ('header.php');
     ?>
 <?php
@@ -51,6 +54,12 @@ $id = $_GET["id"];
             <h4>
                 <div class="name"><?php echo $fetch_products['name']; ?></div>
             </h4>
+            <h3>
+                <div class="author">Author: <?php echo $fetch_products['author']; ?></div>
+            </h3>
+            <h3>
+                <div class="genres">Genres: <?php echo $fetch_products['genres']; ?></div>
+            </h3>
             <h2>
                 <div class="price">NRS <?php echo $fetch_products['price']; ?>/-</div>
             </h2>

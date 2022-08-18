@@ -22,7 +22,7 @@
             <h3>contact info</h3>
             <p> <i class="fas fa-phone"></i> +123-456-7890 </p>
             <p> <i class="fas fa-phone"></i> +111-222-3333 </p>
-            <p> <i class="fas fa-envelope"></i> infosys@gmail.com </p>
+            <p> <i class="fas fa-envelope"></i> onlinebook@gmail.com </p>
             <p> <i class="fas fa-map-marker-alt"></i> kathmandu, nepal</p>
         </div>
 
@@ -36,7 +36,7 @@
 
     </div>
 
-    <p class="credit"> &copy; copyright @ <?php echo date('Y'); ?> by <span>infosys</span> </p>
+    <p class="credit"> &copy; copyright @ <?php echo date('Y'); ?> by <span>onlinebookStore</span> </p>
 
 </section>
 <script src="js/script.js"></script>

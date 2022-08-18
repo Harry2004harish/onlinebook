@@ -116,9 +116,37 @@ if(isset($_POST['update_product'])){
             <input type="text" name="name" class="box" placeholder="enter product name" required>
             <input type="number" min="0" name="price" class="box" placeholder="enter product price" required>
             <input type="text" name="author" class="box" placeholder="enter author name" required>
-            <input type="text" name="genres" class="box" placeholder="enter Genres" required>
+            <input type="text" list="genres" name="genres" class="box" placeholder="Enter Genres" required>
+            <datalist id="genres">
+                <option>Action</option>
+                <option>Adventure</option>
+                <option>classic</option>
+                <option>comic book</option>
+                <option>Novel</option>
+                <option>Detective</option>
+                <option>Mystery</option>
+                <option>Fantasy</option>
+                <option>Historical Fiction</option>
+                <option>Horror</option>
+                <option>Literary Fiction</option>
+                <option>Romance</option>
+                <option>SCi-fic</option>
+                <option>Short stories</option>
+                <option>Suspense and Thrillers</option>
+                <option>Women's Fiction</option>
+                <option>Biographies and Autobiographies</option>
+                <option>Cookbooks</option>
+                <option>Essays</option>
+                <option>History</option>
+                <option>Memoir</option>
+                <option>Poetry</option>
+                <option>Self-Help</option>
+                <option>True Crime</option>
+            </datalist>
             <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
-            <input type="text" name="product_desc" class="box" placeholder="enter product description" required>
+            <!-- <input type="text" name="product_desc" class="box" placeholder="enter product description" required> -->
+            <textarea name="product_desc" class="box" placeholder="enter product description" required>
+</textarea>
             <input type="submit" value="add product" name="add_product" class="btn">
         </form>
 
@@ -133,14 +161,14 @@ if(isset($_POST['update_product'])){
         <div class="box-container">
 
             <?php
-         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='featureproduct'") or die('query failed');
+         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='featureproduct'ORDER BY id DESC") or die('query failed');
          if(mysqli_num_rows($select_products) > 0){
             while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>
             <div class="box">
                 <img src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt="">
                 <div class="name"><?php echo $fetch_products['name']; ?></div>
-                <div class="price">Rs <?php echo $fetch_products['price']; ?>/-</div>
+                <div class="price">NRS <?php echo $fetch_products['price']; ?>/-</div>
                 <!-- <div class="author"><?php echo $fetch_products['author']; ?></div> -->
                 <!-- <div class="product_desc"><?php echo $fetch_products['product_desc']; ?></div> -->
                 <a href="admin_featuredproduct.php?update=<?php echo $fetch_products['id']; ?>"
@@ -177,11 +205,40 @@ if(isset($_POST['update_product'])){
                     class="box" required placeholder="enter product price">
                 <input type="text" name="update_author" value="<?php echo $fetch_update['author']; ?>" class="box"
                     required placeholder="enter Author">
-                <input type="text" name="update_genres" value="<?php echo $fetch_update['genres']; ?>" class="box"
-                    required placeholder="enter Genres">
+                <input type="text" list="genres" name="update_genres" value="<?php echo $fetch_update['genres']; ?>"
+                    class="box" required placeholder="enter Genres">
+                <datalist id="genres">
+                    <option>Action</option>
+                    <option>Adventure</option>
+                    <option>classic</option>
+                    <option>comic book</option>
+                    <option>Novel</option>
+                    <option>Detective</option>
+                    <option>Mystery</option>
+                    <option>Fantasy</option>
+                    <option>Historical Fiction</option>
+                    <option>Horror</option>
+                    <option>Literary Fiction</option>
+                    <option>Romance</option>
+                    <option>SCi-fic</option>
+                    <option>Short stories</option>
+                    <option>Suspense and Thrillers</option>
+                    <option>Women's Fiction</option>
+                    <option>Biographies and Autobiographies</option>
+                    <option>Cookbooks</option>
+                    <option>Essays</option>
+                    <option>History</option>
+                    <option>Memoir</option>
+                    <option>Poetry</option>
+                    <option>Self-Help</option>
+                    <option>True Crime</option>
+                </datalist>
                 <input type="file" class="desc" name="update_image" accept="image/jpg, image/jpeg, image/png">
-                <input type="text" name="update_product_desc" value="<?php echo $fetch_update['product_desc']; ?>"
-                    class="desc" required placeholder="product description">
+                <!-- <input type="text" name="update_product_desc" value="<?php echo $fetch_update['product_desc']; ?>"
+                    class="desc" required placeholder="product description"> -->
+                <textarea name="update_product_desc" class="desc" placeholder="enter Description">
+                <?php echo $fetch_update['product_desc'];?>
+            </textarea>
             </div>
             <input type="submit" value="update" name="update_product" class="btn">
             <input type="reset" value="cancel" id="close-update" class="option-btn">

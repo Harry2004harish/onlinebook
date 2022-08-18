@@ -32,7 +32,7 @@ if(isset($_SESSION['user_id'])){
 
 <header class="header">
     <div class="header-1">
-        <a href="#" class="logo"><i class=" fas fa-book"></i> Info<span>Sys</span></a>
+        <a href="home.php" class="logo"><i class=" fas fa-book"></i> Book<span>Store</span></a>
         <!-- <form action="" class="search-form">
             <a href="search_page.php" class="fas fa-search"></a>
             <label for="search-box" class="fas fa-search"></label>

@@ -51,7 +51,14 @@ if(isset($_POST['add_to_cart'])){
         <div class="box-container">
 
             <?php  
-         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='latestproduct'ORDER BY id DESC") or die('query failed');
+             $limit=9;
+             if(isset($_GET['page'])){
+                 $page=$_GET['page'];
+             }else{
+                 $page=1;
+             }
+             $offset=($page-1)*$limit;
+         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='latestproduct'ORDER BY id DESC LIMIT {$offset},{$limit}") or die('query failed');
          if(mysqli_num_rows($select_products) > 0){
             while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>
@@ -75,6 +82,49 @@ if(isset($_POST['add_to_cart'])){
       }
       ?>
         </div>
+        <style>
+        .pagination {
+            margin-left: 15rem;
+            margin-top: 20px;
+        }
+
+        .pagination span {
+            display: inline-block;
+            border: 1px solid #ff523b;
+            margin-left: 10px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .pagination span:hover {
+            background: #ff523b;
+            color: #fff;
+        }
+
+        .pagination a {
+            color: black;
+        }
+        </style>
+        <?php
+        $select_products = mysqli_query($conn, "SELECT COUNT(*) FROM `products` where type='latestproduct' ") or die('query failed');
+      $total_rows=mysqli_fetch_array($select_products)[0];
+      $total_page=ceil($total_rows/$limit);
+      echo'<div class="pagination">';
+      if($page>1){
+        echo'<a href=?page='.($page - 1).'><span>Prev</span></a>';
+      }
+      for($i=1; $i<=$total_page;$i++){
+        echo '<a href="?page='.$i.'"><span>'.$i.'</span></a>';
+
+      }
+      if($total_page>$page){
+        echo'<a href=?page='.($page + 1).'><span>Next</span></a>';
+        echo '</div>';
+      }
+      ?>
     </section>
     <?php include('footer.php');
     ?>

@@ -144,8 +144,9 @@ if(isset($_POST['update_product'])){
                 <option>True Crime</option>
             </datalist>
             <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
-            <textarea name="product_desc" class="box" placeholder="enter product description" required>
-</textarea>>
+            <!-- <textarea name="product_desc" class="box" placeholder="enter product description" required>
+</textarea> -->
+            <textarea name="product_desc" class="box" placeholder="Enter product description" id=""></textarea>
             <input type="submit" value="add product" name="add_product" class="btn">
         </form>
 

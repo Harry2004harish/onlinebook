@@ -117,7 +117,7 @@ if(isset($_POST['add_to_cart'])){
                 <h3>about us</h3>
                 <p>We offer a tremendous gathering of books in the various classifications of Fiction, Non-fiction,
                     Biographies, History, Religions, Self Help, Children.</p>
-                <a href="about.php" class="btn">read more</a>
+                <a href="aboutus.php" class="btn">read more</a>
             </div>
 
         </div>

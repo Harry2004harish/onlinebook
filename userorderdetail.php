@@ -41,7 +41,7 @@ td {
             <th>Total Products</th>
             <th>Total Price</th>
             <th>Payment Method</th>
-            <th>Payment Status</th>
+            <th>Order Status</th>
         </tr>
         <?php
 $select_orders = mysqli_query($conn, "SELECT * FROM `orders`where user_id='$user_id'") or die('query failed');

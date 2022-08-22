@@ -577,10 +577,11 @@ section{
     margin-top: 20px;
 }
 
-#prodetails .single-pro-image{
-    width: 30%;
-    height: 20%;
+#prodetails .single-pro-image img{
+  
+    height: 50rem;
     margin-right: 50px;
+    padding-right: 30px;
 }
 
 
@@ -605,6 +606,7 @@ section{
 #prodetails .single-pro-details .product_desc{
     padding: 1px 0 10px 0px;
     font-size: 15px;
+    text-align: justify;
 }
 
 #prodetails .single-pro-details h2{

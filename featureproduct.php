@@ -33,7 +33,6 @@ include 'config.php';
       }
       ?>
     </div>
-
     <div class="load-more" style="margin-top: 2rem; text-align:center">
         <a href="feature.php" class="option-btn">load more</a>
     </div>

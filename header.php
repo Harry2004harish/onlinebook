@@ -53,7 +53,6 @@ if(isset($_SESSION['user_id'])){
             <a href="feature.php">Featured</a>
             <a href="shop.php">Shop</a>
             <a href="latestproduct.php">latest product</a>
-            <a href="#blogs">blogs</a>
         </nav>
 
     </div>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Our Team Section</title>
+    <title>About US</title>
     <style>
     @import url('https://fonts.googleapis.com/css?family=Allura|Josefin+Sans');
 

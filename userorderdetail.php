@@ -30,7 +30,7 @@ td {
     padding-left: 40px;
     padding-bottom: 5px;
     text-align: left;
-    font-size: 12px;
+    font-size: 16px;
 }
 </style>
 

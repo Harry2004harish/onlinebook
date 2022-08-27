@@ -156,148 +156,35 @@ if(isset($_POST['update_product'])){
 
     <!-- show products  -->
 
+    <section class="show-products">
 
-    <div class="box-container">
-        <style>
-        .product-container table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-        }
+        <div class="box-container">
 
-        .product-container img {
-            height: 10rem;
-            width: 10rem;
-        }
-
-        .product-container {
-            display: flex;
-            flex-wrap: wrap;
-            text-align: center;
-        }
-
-        .product-container th {
-            padding: 5px;
-            font-weight: normal;
-        }
-
-        .product-container td {
-            padding: 10px 5px;
-        }
-
-        .product-name {
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .product-content {
-            font-size: 16px;
-        }
-        </style>
-        <div class="product-container">
-            <table>
-                <tr>
-                    <th>
-                        <div class="product-name">Products</div>
-                    </th>
-                    <th>
-                        <div class="product-name">Name</div>
-                    </th>
-                    <th>
-                        <div class="product-name">Price</div>
-                    </th>
-                    <th>
-                        <div class="product-name">Author</div>
-                    </th>
-                </tr>
-                <?php
-                 $limit=9;
-                 if(isset($_GET['page'])){
-                     $page=$_GET['page'];
-                 }else{
-                     $page=1;
-                 }
-                 $offset=($page-1)*$limit;
-         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='featureproduct'ORDER BY id DESC  LIMIT {$offset},{$limit}") or die('query failed');
+            <?php
+         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='featureproduct'ORDER BY id DESC") or die('query failed');
          if(mysqli_num_rows($select_products) > 0){
             while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>
-                <tr>
-                    <td><img src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt=""></td>
-                    <td>
-                        <div class="product-content">
-                            <?php echo $fetch_products['name']; ?>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="product-content" style="color:red">NRS <?php echo $fetch_products['price']; ?>/-
-                        </div>
-                    </td>
-                    <td>
-                        <div class="product-content"><?php echo $fetch_products['author']; ?></div>
-                    </td>
-                    <td style="width:1px"> <a
-                            href="admin_featuredproduct.php?update=<?php echo $fetch_products['id']; ?>"
-                            class="option-btn">update</a></td>
-                    <td style="text-align:left"> <a
-                            href="admin_featuredproduct.php?delete=<?php echo $fetch_products['id']; ?>"
-                            class="delete-btn" onclick="return confirm('delete this product?');">delete</a></td>
-                </tr>
-        </div>
-        <?php
+            <div class="box">
+                <img src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt="">
+                <div class="name"><?php echo $fetch_products['name']; ?></div>
+                <div class="price">NRS <?php echo $fetch_products['price']; ?>/-</div>
+                <!-- <div class="author"><?php echo $fetch_products['author']; ?></div> -->
+                <!-- <div class="product_desc"><?php echo $fetch_products['product_desc']; ?></div> -->
+                <a href="admin_featuredproduct.php?update=<?php echo $fetch_products['id']; ?>"
+                    class="option-btn">update</a>
+                <a href="admin_featuredproduct.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-btn"
+                    onclick="return confirm('delete this product?');">delete</a>
+            </div>
+            <?php
          }
       }else{
          echo '<p class="empty">no products added yet!</p>';
       }
       ?>
-        </table>
-        <style>
-        .pagination {
-            margin-left: 5rem;
-            margin-top: 20px;
-            margin-bottom: 15rem;
-        }
+        </div>
 
-        .pagination span {
-            display: inline-block;
-            border: 1px solid #ff523b;
-            margin-left: 10px;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .pagination span:hover {
-            background: #ff523b;
-            color: #fff;
-        }
-
-        .pagination a {
-            color: black;
-        }
-        </style>
-        <?php
-        $select_products = mysqli_query($conn, "SELECT COUNT(*) FROM `products` where type='featureproduct'") or die('query failed');
-      $total_rows=mysqli_fetch_array($select_products)[0];
-      $total_page=ceil($total_rows/$limit);
-      echo'<div class="pagination">';
-      if($page>1){
-        echo'<a href=?page='.($page - 1).'><span>Prev</span></a>';
-      }
-      for($i=1; $i<=$total_page;$i++){
-        echo '<a href="?page='.$i.'"><span>'.$i.'</span></a>';
-
-      }
-      if($total_page>$page){
-        echo'<a href=?page='.($page + 1).'><span>Next</span></a>';
-        echo '</div>';
-      }
-      ?>
-    </div>
-
-
+    </section>
 
     <section class="edit-product-form">
         <?php

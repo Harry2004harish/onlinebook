@@ -22,7 +22,7 @@ if(isset($_POST['add_product'])){
    $author=$_POST['author'];
    $genres=$_POST['genres'];
 
-   $select_product_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name'and type='latestproduct'") or die('query failed');
+   $select_product_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name' and type='latestproduct'") or die('query failed');
 
    if(mysqli_num_rows($select_product_name) > 0){
       $message[] = 'product name already added';
@@ -44,7 +44,7 @@ if(isset($_POST['add_product'])){
 
 if(isset($_GET['delete'])){
    $delete_id = $_GET['delete'];
-   $delete_image_query = mysqli_query($conn, "SELECT image FROM `products` WHERE id = '$delete_id'") or die('query failed');
+   $delete_image_query = mysqli_query($conn, "SELECT image FROM `latestproduct` WHERE id = '$delete_id'") or die('query failed');
    $fetch_delete_image = mysqli_fetch_assoc($delete_image_query);
    unlink('uploaded_img/'.$fetch_delete_image['image']);
    mysqli_query($conn, "DELETE FROM `products` WHERE id = '$delete_id'") or die('query failed');
@@ -60,7 +60,7 @@ if(isset($_POST['update_product'])){
    $update_author=$_POST['update_author'];
    $update_genres=$_POST['update_genres'];
 
-   mysqli_query($conn, "UPDATE `products` SET name = '$update_name', price = '$update_price',product_desc='$update_product_desc',author='$update_author', genres='$update_genres' WHERE id = '$update_p_id'") or die('query failed');
+   mysqli_query($conn, "UPDATE `products` SET name = '$update_name', price = '$update_price',product_desc='$update_product_desc',author='$update_author',genres='$update_genres' WHERE id = '$update_p_id'") or die('query failed');
 
    $update_image = $_FILES['update_image']['name'];
    $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
@@ -72,7 +72,7 @@ if(isset($_POST['update_product'])){
       if($update_image_size > 2000000){
          $message[] = 'image file size is too large';
       }else{
-         mysqli_query($conn, "UPDATE `products` SET image = '$update_image' WHERE id = '$update_p_id'") or die('query failed');
+         mysqli_query($conn, "UPDATE `featuredproduct` SET image = '$update_image' WHERE id = '$update_p_id'") or die('query failed');
          move_uploaded_file($update_image_tmp_name, $update_folder);
          unlink('uploaded_img/'.$update_old_image);
       }
@@ -109,13 +109,13 @@ if(isset($_POST['update_product'])){
 
     <section class="add-products">
 
-        <h1 class="title">shop products</h1>
+        <h1 class="title">Latest products</h1>
 
         <form action="" method="post" enctype="multipart/form-data">
             <h3>add product</h3>
             <input type="text" name="name" class="box" placeholder="enter product name" required>
             <input type="number" min="0" name="price" class="box" placeholder="enter product price" required>
-            <input type="text" name="author" class="box" placeholder="author name" required>
+            <input type="text" name="author" class="box" placeholder="enter author name" required>
             <input type="text" list="genres" name="genres" class="box" placeholder="Enter Genres" required>
             <datalist id="genres">
                 <option>Action</option>
@@ -144,9 +144,9 @@ if(isset($_POST['update_product'])){
                 <option>True Crime</option>
             </datalist>
             <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
-            <!-- <textarea name="product_desc" class="box" placeholder="enter product description" required>
-</textarea> -->
-            <textarea name="product_desc" class="box" placeholder="Enter product description" id=""></textarea>
+            <!-- <input type="text" name="product_desc" class="box" placeholder="enter product description" required> -->
+            <textarea name="product_desc" class="box" placeholder="enter product description" required>
+</textarea>
             <input type="submit" value="add product" name="add_product" class="btn">
         </form>
 
@@ -156,37 +156,150 @@ if(isset($_POST['update_product'])){
 
     <!-- show products  -->
 
-    <section class="show-products">
 
-        <div class="box-container">
+    <div class="box-container">
+        <style>
+        .product-container table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
 
-            <?php
-         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='latestproduct' ORDER BY id DESC") or die('query failed');
+        .product-container img {
+            height: 10rem;
+            width: 10rem;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .product-container th {
+            padding: 5px;
+            font-weight: normal;
+        }
+
+        .product-container td {
+            padding: 10px 5px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .product-content {
+            font-size: 16px;
+        }
+        </style>
+        <div class="product-container">
+            <table>
+                <tr>
+                    <th>
+                        <div class="product-name">Products</div>
+                    </th>
+                    <th>
+                        <div class="product-name">Name</div>
+                    </th>
+                    <th>
+                        <div class="product-name">Price</div>
+                    </th>
+                    <th>
+                        <div class="product-name">Author</div>
+                    </th>
+                </tr>
+                <?php
+                 $limit=9;
+                 if(isset($_GET['page'])){
+                     $page=$_GET['page'];
+                 }else{
+                     $page=1;
+                 }
+                 $offset=($page-1)*$limit;
+         $select_products = mysqli_query($conn, "SELECT * FROM `products` where type='latestproduct'ORDER BY id DESC  LIMIT {$offset},{$limit}") or die('query failed');
          if(mysqli_num_rows($select_products) > 0){
             while($fetch_products = mysqli_fetch_assoc($select_products)){
       ?>
-            <div class="box">
-                <img src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt="">
-                <div class="name"><?php echo $fetch_products['name']; ?></div>
-                <div class="price">NRS <?php echo $fetch_products['price']; ?>/-</div>
-                <!-- <div class="author"><?php echo $fetch_products['author']; ?></div> -->
-                <!-- <div class="product_desc"><?php echo $fetch_products['product_desc']; ?></div> -->
-                <a href="admin_products.php?update=<?php echo $fetch_products['id']; ?>" class="option-btn">update</a>
-                <a href="admin_products.php?delete=<?php echo $fetch_products['id']; ?>" class="delete-btn"
-                    onclick="return confirm('delete this product?');">delete</a>
-            </div>
-            <?php
+                <tr>
+                    <td><img src="uploaded_img/<?php echo $fetch_products['image']; ?>" alt=""></td>
+                    <td>
+                        <div class="product-content">
+                            <?php echo $fetch_products['name']; ?>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-content" style="color:red">NRS <?php echo $fetch_products['price']; ?>/-
+                        </div>
+                    </td>
+                    <td>
+                        <div class="product-content"><?php echo $fetch_products['author']; ?></div>
+                    </td>
+                    <td style="width:1px"> <a
+                            href="admin_featuredproduct.php?update=<?php echo $fetch_products['id']; ?>"
+                            class="option-btn">update</a></td>
+                    <td style="text-align:left"> <a
+                            href="admin_featuredproduct.php?delete=<?php echo $fetch_products['id']; ?>"
+                            class="delete-btn" onclick="return confirm('delete this product?');">delete</a></td>
+                </tr>
+        </div>
+        <?php
          }
       }else{
          echo '<p class="empty">no products added yet!</p>';
       }
       ?>
-        </div>
+        </table>
+        <style>
+        .pagination {
+            margin-left: 5rem;
+            margin-top: 20px;
+            margin-bottom: 15rem;
+        }
 
-    </section>
+        .pagination span {
+            display: inline-block;
+            border: 1px solid #ff523b;
+            margin-left: 10px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .pagination span:hover {
+            background: #ff523b;
+            color: #fff;
+        }
+
+        .pagination a {
+            color: black;
+        }
+        </style>
+        <?php
+        $select_products = mysqli_query($conn, "SELECT COUNT(*) FROM `products` where type='latestproduct'") or die('query failed');
+      $total_rows=mysqli_fetch_array($select_products)[0];
+      $total_page=ceil($total_rows/$limit);
+      echo'<div class="pagination">';
+      if($page>1){
+        echo'<a href=?page='.($page - 1).'><span>Prev</span></a>';
+      }
+      for($i=1; $i<=$total_page;$i++){
+        echo '<a href="?page='.$i.'"><span>'.$i.'</span></a>';
+
+      }
+      if($total_page>$page){
+        echo'<a href=?page='.($page + 1).'><span>Next</span></a>';
+        echo '</div>';
+      }
+      ?>
+    </div>
+
+
 
     <section class="edit-product-form">
-
         <?php
       if(isset($_GET['update'])){
          $update_id = $_GET['update'];
@@ -234,12 +347,14 @@ if(isset($_POST['update_product'])){
                     <option>True Crime</option>
                 </datalist>
                 <input type="file" class="desc" name="update_image" accept="image/jpg, image/jpeg, image/png">
+                <!-- <input type="text" name="update_product_desc" value="<?php echo $fetch_update['product_desc']; ?>"
+                    class="desc" required placeholder="product description"> -->
                 <textarea name="update_product_desc" class="desc" placeholder="enter Description">
                 <?php echo $fetch_update['product_desc'];?>
             </textarea>
             </div>
             <input type="submit" value="update" name="update_product" class="btn">
-            <input type="button" value="cancel" id="close-update" class="option-btn">
+            <input type="reset" value="cancel" id="close-update" class="option-btn">
         </form>
         <?php
          }
@@ -250,8 +365,6 @@ if(isset($_POST['update_product'])){
    ?>
 
     </section>
-
-
 
 
     <!-- custom admin js file link  -->
@@ -280,6 +393,7 @@ if(isset($_POST['update_product'])){
         accountBox.classList.remove("active");
     };
     </script>
+
 </body>
 
 </html>

@@ -70,7 +70,8 @@ if(isset($_GET['delete_all'])){
                 <div class="price">NRS <?php echo $fetch_cart['price']; ?>/-</div>
                 <form action="" method="post">
                     <input type="hidden" name="cart_id" value="<?php echo $fetch_cart['id']; ?>">
-                    <input type="number" min="1" name="cart_quantity" value="<?php echo $fetch_cart['quantity']; ?>">
+                    <input type="number" min="1" Max="5" name="cart_quantity"
+                        value="<?php echo $fetch_cart['quantity']; ?>">
                     <input type="submit" name="update_cart" value="update" class="option-btn">
                 </form>
                 <div class="sub-total"> sub total :

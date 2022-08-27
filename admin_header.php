@@ -31,12 +31,12 @@ if(isset($message)){
         <a href="admin_page.php" class="logo">Admin<span>Panel</span></a>
 
         <nav class="navbar">
-            <a href="admin_page.php">home</a>
-            <a href="admin_products.php">products</a>
+            <a href="admin_page.php">Home</a>
+            <a href="admin_products.php">Products</a>
             <a href="admin_featuredproduct.php">FeatuedProduct</a>
-            <a href="admin_orders.php">orders</a>
-            <a href="admin_users.php">users</a>
-            <a href="admin_contacts.php">messages</a>
+            <a href="admin_orders.php">Orders</a>
+            <a href="admin_users.php">Users</a>
+            <a href="admin_contacts.php">Messages</a>
         </nav>
 
         <div class="icons">
